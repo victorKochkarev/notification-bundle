@@ -1,5 +1,4 @@
 services:
-
     mgilet.notification:
         class: Mgilet\NotificationBundle\Manager\NotificationManager
         arguments: ["@doctrine.orm.entity_manager", '@mgilet.notifiable_discovery']
@@ -8,10 +7,8 @@ services:
         class: Mgilet\NotificationBundle\NotifiableDiscovery
         arguments: [ '@doctrine.orm.entity_manager', '@annotation_reader']
 
-
     mgilet.twig_extension:
-            class: Mgilet\NotificationBundle\Twig\NotificationExtension
-            public: false
-            tags:
-                - { name: twig.extension }
-            arguments: ['@mgilet.notification', '@security.token_storage', '@twig', '@router']
+        class: Mgilet\NotificationBundle\Twig\NotificationExtension
+        tags:
+            - { name: twig.extension }
+        arguments: ['@mgilet.notification', '@security.token_storage', '@twig', '@router']
